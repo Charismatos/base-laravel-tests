@@ -21,7 +21,7 @@ class HomeRouteTest extends TestCase
 
 
         // Act - Request the home page
-        $response = $this->get('/');
+        $response = $this->get(route('home'));
 
         // Assert - Check for a 200 OK status
         $response->assertStatus(200);
@@ -76,7 +76,7 @@ class HomeRouteTest extends TestCase
 
 
         // Act - Request the home page
-        $response = $this->get('/');
+        $response = $this->get(route('home'));
 
         // Assert - Check for the absence of sensitive data in the response
         $response->assertDontSee('password');

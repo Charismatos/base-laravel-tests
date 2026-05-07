@@ -22,7 +22,7 @@ class RegisterRouteTest extends TestCase
 
 
         // Act - Request the home page
-        $response = $this->get('/register');
+        $response = $this->get(route('user-register-form'));
 
         // Assert - Check for a 200 OK status
         $response->assertStatus(200);
@@ -38,7 +38,7 @@ class RegisterRouteTest extends TestCase
         ];
 
         // Act - Request the home page
-        $response = $this->post('/register', $userData);
+        $response = $this->post(route('user-register-submit'), $userData);
 
         // Assert - Check for a 200 OK status
         $response->assertStatus(302);
