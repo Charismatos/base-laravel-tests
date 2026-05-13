@@ -12,8 +12,12 @@ Route::post('/register', [UserController::class, 'store_user'])->name('user-regi
 Route::get('/login', [UserController::class, 'login'])->name('user-login-form');
 Route::post('/login', [UserController::class, 'submit_user_login'])->name('user-login-submit');
 
-Route::get('/edit', [UserController::class, 'edit'])->name('user-edit-form');
-Route::patch('/edit', [UserController::class, 'submit_edited_user'])->name('user-edit-submit');
+Route::get('/dashboard/{user}', [UserController::class, 'dashboard'])->name('user-dashboard');
 
-Route::get('/delete', [UserController::class, 'delete'])->name('user-delete-form');
-Route::delete('/delete', [UserController::class, 'submit_to_delete_user'])->name('user-delete-submit');
+Route::post('/logout', [UserController::class, 'logout'])->name('user-logout');
+
+Route::get('/edit/{user}', [UserController::class, 'edit'])->name('user-edit-form');
+Route::patch('/edit/{user}', [UserController::class, 'submit_edited_user'])->name('user-edit-submit');
+
+Route::get('/delete/{user}', [UserController::class, 'delete'])->name('user-delete-form');
+Route::delete('/delete/{user}', [UserController::class, 'submit_to_delete_user'])->name('user-delete-submit');

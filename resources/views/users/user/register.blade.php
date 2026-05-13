@@ -8,19 +8,25 @@
 </head>
 
 <body>
-    <h1>REGISTER</h1>
-    <form action="{{ route('user-register-submit') }}" method="POST">
+    @if(session('delete_success'))
+    <div class="delete-successful">
+        <p class="delete-success-message">Deleted Successfuly</p>
+    </div>
+    @endif
+    <h1 class="register-heading">REGISTER</h1>
+    <form class="register-form user-register-form" action="{{ route('user-register-submit') }}" method="POST">
         @csrf
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+        <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
+        <label class="register-labels" for="name">Name:</label>
+        <input class="small-text-inputs" type="text" id="name" name="name" required><br><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <label class="register-labels" for="email">Email:</label>
+        <input class="small-text-inputs" type="email" id="email" name="email" required><br><br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <label class="register-labels" for="password">Password:</label>
+        <input class="small-text-inputs" type="password" id="password" name="password" required><br><br>
 
-        <button type="submit">Register</button>
+        <button class="register-submit-btn" type="submit">Register</button>
     </form>
 </body>
 

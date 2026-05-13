@@ -8,19 +8,21 @@
 </head>
 
 <body>
-    <h1>DELETE PROFILE</h1>
-    <form action="{{ route('user-register-submit') }}" method="POST">
+    <h1 class="delete-heading">DELETE PROFILE</h1>
+    <b>Name:</b> <span>{{ $user->name }}</span>
+
+    <b>Email:</b> <span>{{ $user->email }}</span>
+
+    <div class="delete-confirmation">
+        Are You Sure You Want To Delete This Account?
+        <a href="{{ route('user-dashboard', ['user'=>$user->id]) }}"><button>No</button></a>
+        <a href="{{ route('user-delete-submit', ['user'=>$user->id]) }}"><button>Yes</button></a>
+    </div>
+
+    <form class="delete-form" action="{{ route('user-delete-submit', ['user'=>$user->id]) }}" method="POST">
         @csrf
-
-        @foreach($userData as $userAttribute)
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="$userAttribute->name" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="$userAttribute->email" required><br><br>
-
-        <button type="submit">Delete Account</button>
-        @endforeach
+        @method('DELETE')
+        <button class="delete-submit-btn" type="submit">Delete Account</button>
     </form>
 </body>
 

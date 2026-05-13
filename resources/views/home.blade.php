@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Base Laravel Tests') }}</title>
-    </head>
-    <body>
-        Base Laravel Tests
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-       
-    </body>
+    <title>{{ config('app.name', 'Base Laravel Tests') }}</title>
+</head>
+
+<body>
+    <h1 class="home-heading">Base Laravel Tests</h1>
+
+</body>
+
 </html>

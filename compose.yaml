@@ -21,7 +21,7 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - sail
+            - sail      
         depends_on:
             - mysql
             - redis

@@ -8,22 +8,20 @@
 </head>
 
 <body>
-    <h1>EDIT PROFILE</h1>
-    <form action="{{ route('user-register-submit') }}" method="POST">
+    <h1 class="update-heading">EDIT PROFILE</h1>
+    <form class="update-form" action="{{ route('user-edit-submit', ['user'=>$user->id]) }}" method="POST">
         @csrf
+        @method('PATCH')
+        <label class="update-labels" for="name">Name:</label>
+        <input class="small-text-inputs" type="text" id="name" name="name" value="{{ $user->name }}" required><br><br>
 
-        @foreach($userData as $userAttribute)
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="$userAttribute->name" required><br><br>
+        <label class="update-labels" for="email">Email:</label>
+        <input class="small-text-inputs" type="email" id="email" name="email" value="{{ $user->email }}" required><br><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="$userAttribute->email" required><br><br>
+        <label class="update-labels" for="password">Password:</label>
+        <input class="small-text-inputs" type="password" id="password" name="password" value="{{ $user->password }}" required><br><br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" value="$userAttribute->password" required><br><br>
-
-        <button type="submit">Update</button>
-        @endforeach
+        <button class="update-submit-btn" type="submit">Update</button>
     </form>
 </body>
 

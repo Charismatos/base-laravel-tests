@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class LoginRouteTest extends TestCase
@@ -33,8 +34,9 @@ class LoginRouteTest extends TestCase
     {
         // Assign (Models, Factories, Mockables, etc.)
         $user = User::factory()->create([
+            'name' => 'Mike Dean',
             'email' => 'mike@gmail.com',
-            'password' => 'password123',
+            'password' => Hash::make('password123'),
         ]);
 
 
@@ -45,7 +47,8 @@ class LoginRouteTest extends TestCase
         ]);
 
         // Assert - Check for a 200 OK status
+        $this->assertAuthenticatedAs($user);
         $response->assertStatus(302);
-        $response->assertRedirect(route('home'));
+        $response->assertRedirectToRoute('user-dashboard', ['user' => $user->id]);
     }
 }
